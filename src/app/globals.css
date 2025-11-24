@@ -22,5 +22,106 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Prefer Helvetica if available, fall back to Arial / system sans */
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Minimalistic centered Hello World container */
+.hello-wrapper {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(180deg, var(--background), color-mix(in srgb, var(--background) 95%, #f7f7f7));
+}
+
+.hello {
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, -apple-system, "Segoe UI";
+  color: var(--foreground);
+  margin: 0;
+  font-weight: 600;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.015em;
+  /* Large, responsive type */
+  font-size: clamp(3rem, 12vw, 6rem);
+  line-height: 0.92;
+  text-align: center;
+  display: block;
+  /* Subtle shadow for depth */
+  text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+  animation: reveal 900ms cubic-bezier(.2,.9,.2,1) both;
+  transform-origin: center;
+  transition: transform 280ms ease, letter-spacing 280ms ease;
+}
+
+/* Small subheading (optional) */
+.hello-sub {
+  margin-top: 0.8rem;
+  color: #8f8f8f;
+  font-size: clamp(0.875rem, 2.6vw, 1.125rem);
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+/* Reveal animation: fade upward and subtle scaling */
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.998);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Typewriter-style caret and subtle letter reveal for the main heading */
+.hello::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 1.1em;
+  margin-left: 0.65rem;
+  vertical-align: middle;
+  background: currentColor;
+  animation: blink 1s steps(2, start) infinite;
+  opacity: 0.85;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Staggered reveal for accessibility — add optional fade-in delay for subheading */
+.hello-sub { opacity: 0; animation: reveal 1200ms cubic-bezier(.2,.9,.2,1) both; animation-delay: 250ms; }
+
+/* slight letter entrance effect for hello-text */
+.hello-text {
+  display: inline-block;
+  transform: translateY(6px);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: text-up 850ms cubic-bezier(.2,.9,.2,1) both;
+}
+
+@keyframes text-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hover/focus grows slightly */
+.hello-wrapper:hover .hello,
+.hello-wrapper:focus-within .hello {
+  transform: translateY(-2px) scale(1.02);
+  letter-spacing: -0.01em;
+}
+
+/* Small accessibility improvement so it looks good on small screens */
+@media (prefers-reduced-motion: reduce) {
+  .hello { animation: none; }
+  .hello-text { animation: none; }
+  .hello-sub { animation: none; }
 }
