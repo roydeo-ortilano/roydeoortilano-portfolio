@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-slate-800 mt-8 pt-8 text-center text-slate-400">
-          <p>&copy; {currentYear} Lorem Ipsum. All rights reserved.</p>
+          <p>&copy; {currentYear} Roy Deo B. Ortilano. All rights reserved.</p>
         </div>
       </div>
     </footer>
