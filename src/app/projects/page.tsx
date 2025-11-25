@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import countCluckImg from '../../../images/projects/count-a-cluck-quest.webp.webp'
+import countCluckImg from '../../../images/projects/count-a-cluck-quest.webp'
 import basicCalcImg from '../../../images/projects/basic-calculator.webp'
 import discoverPhImg from '../../../images/projects/discoverph.webp'
 
