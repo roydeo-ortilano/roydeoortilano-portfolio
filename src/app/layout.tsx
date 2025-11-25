@@ -1,8 +1,10 @@
+// src/app/layout.tsx
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-// import Navigation from '@/components/Navigation'
-// import Footer from '@/components/Footer'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
+import MouseGlow from '@/components/MouseGlow'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,11 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
-        {/* <Navigation /> */}
-        <main className="min-h-screen">
+        <MouseGlow />
+        <Navigation />
+        <main className="min-h-screen relative z-10">
           {children}
         </main>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   )
